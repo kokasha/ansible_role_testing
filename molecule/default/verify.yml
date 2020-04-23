@@ -4,11 +4,20 @@
 - name: Verify
   hosts: all
   tasks:
-  - name: Validate Httpd is present
-    yum:
-      name: tree
-      state: present
-       
-  - name: Example assertion
+  # - name: Validate tree is present
+  #   yum:
+  #     name: tree
+  #     state: present
+
+  - name: Get the file Stat
+    stat: 
+      path: /etc/passwd
+    register: file_status
+
+  - name: Validate File is correct
     assert:
-      that: true
+      that:
+        - file_status.stat.exists
+        - file_status.stat.pw_name == 'root'
+      success_msg: "File contents is Valid"
+      fail_msg: "File contents has been altered"

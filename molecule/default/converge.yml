@@ -20,6 +20,13 @@
       import_role:
         name: "dummy_role"
 
+    - name: Get the file Stat
+      stat: 
+        path: /etc/passwd
+      register: file_status
+
+    - debug: var=file_status 
+
     - name: "Include ansible_role_testing"
       import_role:
         name: "ansible_role_testing"
