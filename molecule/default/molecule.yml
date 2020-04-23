@@ -13,5 +13,7 @@ lint: |
     ansible-lint .
 provisioner:
   name: ansible
+  ansible_args:
+    - --skip-tags=no_testing
 verifier:
   name: ansible

@@ -5,3 +5,12 @@
   yum:
     name: httpd
     state: installed
+
+- name: Output during Testing
+  debug:
+    msg: "Hello World"
+
+- name: DONT OUTPUT during Testing
+  debug:
+    msg: "Hello World"
+  tags: no_testing
