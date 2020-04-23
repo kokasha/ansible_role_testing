@@ -1,0 +1,14 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+  - name: Validate Httpd is present
+    yum:
+      name: httpd
+      state: present
+       
+  - name: Example assertion
+    assert:
+      that: true
