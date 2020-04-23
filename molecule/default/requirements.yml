@@ -1,0 +1,6 @@
+roles:
+  # Install a role from Ansible Galaxy.
+  - name: dummy_role
+    src: https://github.com/kokasha/dummy_role
+    scm: git
+    # version: 1.9.6

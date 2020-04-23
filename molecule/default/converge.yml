@@ -1,7 +1,25 @@
 ---
-- name: Converge
+- name: Converge | Deploy the Role
   hosts: all
   tasks:
+    - name: Load OS Specifc Vars
+      include_vars: "vars/os/{{ ansible_distribution }}.yml"
+
+    - name: Load Network Specifc Vars
+      include_vars: "vars/network/{{ ansible_distribution }}.yml"
+
+    - debug:
+        msg: 
+        - "{{ ansible_os_family }}"
+        - "{{ ansible_distribution }}"
+        - "{{ os_file }}"
+        - "{{ net_segment }}"
+
+
+    - name: "Run the Dummy Role"
+      import_role:
+        name: "dummy_role"
+
     - name: "Include ansible_role_testing"
       import_role:
         name: "ansible_role_testing"

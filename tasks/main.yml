@@ -1,16 +1,6 @@
 ---
 # tasks file for sample_ansible_role_testing
 
-- name: Install HTTPd
-  yum:
-    name: httpd
-    state: installed
-
-- name: Output during Testing
-  debug:
-    msg: "Hello World"
-
-- name: DONT OUTPUT during Testing
-  debug:
-    msg: "Hello World"
-  tags: no_testing
+- name: Deploy the App
+  include_tasks: "{{ ansible_distribution }}.yml"
+  tags: always

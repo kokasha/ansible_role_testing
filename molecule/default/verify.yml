@@ -6,7 +6,7 @@
   tasks:
   - name: Validate Httpd is present
     yum:
-      name: httpd
+      name: tree
       state: present
        
   - name: Example assertion

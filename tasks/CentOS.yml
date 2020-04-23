@@ -1,0 +1,22 @@
+---
+# tasks file for sample_ansible_role_testing
+
+- name: Install Package
+  become: yes
+  yum:
+    name: tree
+    update_cache: yes
+    state: present
+  tags:
+    - dont_run_in_testing
+
+- name: Run Only During Testing
+  debug:
+    msg: "ONLY During Testing"
+  tags:
+    - run_during_testing_only
+    - never
+
+- name: Normal Task
+  debug:
+    msg: "Normal Task will run in case no TAG is specified"
